@@ -32,7 +32,7 @@ namespace PL
             comboBoxTypeFilter.ItemsSource = Enum.GetValues(typeof(DeviceType));
             comboBoxTypeAddDevice.ItemsSource = Enum.GetValues(typeof(DeviceType));
             comboBoxTypeAddDevice.SelectedItem = DeviceType.Radar;
-
+            updateListView();
         }
         public ObservableCollection<T> Convert<T>(IEnumerable<T> original)
         {
@@ -53,7 +53,7 @@ namespace PL
         {
             try
             {
-                int minimun = getTextBoxAsInt(minimumTextBox, "minimum");
+                float minimun = getTextBoxAsFloat(minimumTextBox, "minimum");
                 DataContext = Convert(bl.GetHighestRangeWithMinimalfieldOfVision(minimun));
             }
             catch (InvalidInputException ex)
@@ -90,10 +90,7 @@ namespace PL
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-
-
-
+            } 
         }
 
         private void typeFilterchanged(object sender, RoutedEventArgs e)
@@ -111,23 +108,26 @@ namespace PL
 
         private void remove_Click(object sender, RoutedEventArgs e)
         {
+            int id = -1;
             try
             {
-                int id = getTextBoxAsInt(IdTextBox, "id");
+                id = getTextBoxAsInt(IdTextBox, "id");
                 bl.RemoveDevice(id);
                 MessageBox.Show("device " + id + " removed successfuly!");
+                updateListView();
             }
             catch (InvalidInputException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            catch (KeyNotFoundException)
+            {
+                MessageBox.Show("Device with id: "+id.ToString()+" not found");
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-            updateListView();
-
         }
 
         private void updateListView()

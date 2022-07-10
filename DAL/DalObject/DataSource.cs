@@ -26,8 +26,9 @@ namespace DalObject
                 id = idIntilizer;
                 type = (DeviceType)(rand.Next() % 3);
                 range = rand.Next()%50000;
-                fieldOfVision = (float)rand.NextDouble()* 360;
-                
+                fieldOfVision = (float)Math.Round((rand.NextDouble() * 360), 2);
+
+
                 try
                 {
                     devices.Add(new ObservationDevice(id, type, range, fieldOfVision));
