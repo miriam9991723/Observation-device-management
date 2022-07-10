@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DalObject;
+using BL;
 
-namespace DalApi
+namespace BlApi
 {
-    public class DalFactory
+    public class BLFactory
     {
-        public static IDal GetDal()
+        public static IBL GetBL()
         {
-            return DalObject.DalObject.GetInstance();
-
+            return BL.BL.GetInstance();
         }
     }
 }
