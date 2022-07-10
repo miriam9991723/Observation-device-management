@@ -11,7 +11,7 @@ namespace DalObject
     {
         internal static DalObject Instance;
 
-        private DalObject() { }
+        private DalObject() { DataSource.intilize(); }
         public static DalObject GetInstance()
         {
             if (Instance == null)
