@@ -56,7 +56,7 @@ namespace BL
 
         private BO.ObservationDevice convertToBl(Entities.ObservationDevice device)
         {
-            return (BO.ObservationDevice)device;
+            return  new BO.ObservationDevice(id: device.Id, type: (BO.DeviceType)device.Type, range: device.Range, fieldOfVision:device.FieldOfVision);
         }
     }
 }
