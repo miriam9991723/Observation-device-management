@@ -11,7 +11,7 @@ namespace DalApi
     {
         public static IDal GetDal()
         {
-            return DalObject.DalObject.GetInstance();
+            return DalXML.DalXML.GetInstance();
 
         }
     }

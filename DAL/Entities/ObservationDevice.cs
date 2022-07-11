@@ -8,6 +8,7 @@ namespace Entities
 {
     public class ObservationDevice
     {
+        public ObservationDevice() { }
         public ObservationDevice(int id, DeviceType type, int range, float fieldOfVision)
         {
             Id = id;
